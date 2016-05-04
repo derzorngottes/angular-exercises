@@ -194,12 +194,12 @@
       </div>
     </div>
 
-    <div class='row' ng-init='numbers=[1,1,2,5,6,9,9,9] track by $index'>
+    <div class='row' ng-init='numbers=[1,1,2,5,6,9,9,9]'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>14. Duplicate repeats</h4>
         <ul>
-          <li ng-repeat='num in numbers'>
+          <li ng-repeat='num in numbers track by $index'>
             {{ num }}
           </li>
         </ul>
@@ -207,10 +207,15 @@
       </div>
     </div>
 
-    <div class='row'>
+    <div class='row' ng-controller='symsController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
-        <h4></h4>
+        <h4>15. Iterate through object keys</h4>
+        <p ng-repeat='sym in symbols'>
+          <span ng-repeat='(key, value) in sym'>
+            key: {{ key }} <br> value: {{ value }} <br>
+          </span>
+        </p>
         <hr>
       </div>
     </div>
@@ -218,7 +223,12 @@
     <div class='row'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
-        <h4></h4>
+        <h4>16. Password validator</h4>
+        <p><strong>Sign up page</strong></p>
+        <input type="password" ng-model='password'>
+        <p>Your password is {{ password.length ? password.length : 0 }} characters</p>
+        <p><span ng-show='password.length < 6'>Password invalid!</span></p>
+        <p><span ng-hide='password.length < 6'><button>Sign up!</button></span></p>
         <hr>
       </div>
     </div>
@@ -226,8 +236,24 @@
     <div class='row'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
-        <h4></h4>
+        <h4>17. Password validator v2</h4>
+        <p><strong>Sign up page</strong></p>
+        <input type="password" ng-model='password2'>
+        <p ng-class='{ red: !password2.length || password2.length < 6,
+                       green: password2.length >= 6 }'>
+          Your password is {{ password2.length ? password2.length : 0 }} characters
+        </p>
+        <p><span ng-show='password2.length < 6'>Password invalid!</span></p>
+        <p><span ng-hide='password2.length < 6'><button>Sign up!</button></span></p>
         <hr>
+        <style>
+          .red {
+            color: red;
+          }
+          .green {
+            color: green;
+          }
+        </style>
       </div>
     </div>
 
