@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='angular-exercises'>
   <head>
     <meta charset="utf-8">
     <title>Angular Workbook Excercises</title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css' media='screen' rel='stylesheet'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.css' media='screen' charset='utf-8'>
-    <link rel="stylesheet" href="style.css" media="screen" charset="utf-8">
   </head>
 
   <body>
@@ -16,37 +14,32 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class='row' ng-controller='helloController'>
       <div class="col-md-6 col-md-offset-1">
         <br><br>
         <h4>1. Hello World</h4>
-        <p>Say something to the world: <input type="text" ng-model='greeting' ng-init='greeting="Hello, "'></p>
+        <p>Say something to the world: <input type='text' ng-model='greeting' ng-init='greeting="Hello, "'></p>
         <p>{{ greeting }} world!</p>
         <hr>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-controller='whoController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>2. Who are you?</h4>
-        <p><input type="text" ng-model='name' placeholder='What is your name?'></p>
+        <p><input type="text" ng-model='name'></p>
         <p>My name is: {{ name }}</p>
         <hr>
       </div>
     </div>
 
-    <div class='row'>
+    <div class='row' ng-controller='dropdownController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>3. Dropdowns</h4>
         <p>Pick one:</p>
-        <select class="animals" ng-model='animal'>
-          <option value='dogs'>Dogs</option>
-          <option value='cats'>Cats</option>
-          <option value='dogs and cats'>Dogs and Cats</option>
-          <option value='neither'>Neither</option>
-        </select>
+        <select ng-model='animal' ng-options='animal for animal in animals'></select>
         <p>I love {{ animal }}</p>
         <hr>
       </div>
@@ -91,7 +84,7 @@
       </div>
     </div>
 
-    <div class='row' ng-app='selecty' ng-controller='selectController'>
+    <!-- <div class='row' ng-app='selecty' ng-controller='selectController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>7. Dropdown redux</h4>
@@ -112,7 +105,7 @@
         $scope.list = ['1','2','3','4','5','6','7'];
       });
       </script>
-    </div>
+    </div> -->
 
     <div class='row'>
       <div class='col-md-6 col-md-offset-1'>
@@ -131,5 +124,6 @@
     <script type='text/javascript' src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
     <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js'></script>
+    <script type='text/javascript' src='index.js'></script>
   </body>
 </html>
