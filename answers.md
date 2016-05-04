@@ -36,3 +36,25 @@ An initial page template creates the view. Changes to the model are then immedia
 * $digest() also runs through the $asyncQueue of the $evalAsync list. These are fns to evaluate after the fn that triggered the $digest().
 * $scope.$apply() can be used to force a $digest() loop outside of AngularJS (e.g. when using jQuery).
 * $apply() should only be called in a service, not in a controller.
+
+# 3 - NO QUESTIONS #
+
+# 4 - EXPRESSIONS AND FILTERS #
+
+1. What are Angular expressions? How do they compare to tags from templating engines you've used before?
+Expressions are written between curly braces {{ like so }}. They evaluate the result of javascript expressions and display the result in the view. They're visually similar to tags such as those used in handlebars, but they have a different function and mechanism.
+
+2. What happens when you write invalid code in an expression? What type of error do you get?
+There is no explicit error, however the view displays the expression as plaintext {{ like this }}.
+
+3. What are Angular filters? Describe what a filter does and then name four built-in filters, including one that we haven't used yet.
+Filters are used to format the output of expressions. The format is {{ like-this | filter-name-optional-params }}. You can use one of the built-in filters or create a custom filter. Built-in filters include currency, date, number:X, and json.
+
+4. What's the syntax for filters?
+See above. Optional params = the params required with some filters, i.e. | number:2, or | date: 'dd-MM-yyyy'.
+
+5. Can you use more than one filter?
+Yes. Double pipe. {{ like-this | filter1 | filter2 }}
+
+6. We'll soon see how to create custom filters. What is a use case for a custom filter?
+When you have multiple expressions that you want to transform in the same manner.

@@ -45,34 +45,34 @@
       </div>
     </div>
 
-    <div class='row'>
+    <div class='row' ng-controller='pimoneyController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>4. Pi to $Pi</h4>
         <p>
           Plain Pi <br>
-          {{ 3.14159265359 }}
+          {{ pi }}
         </p>
         <p>
           Money Pi <br>
-          {{ 3.14159265359 | currency }}
+          {{ pi | currency }}
         </p>
         <hr>
       </div>
     </div>
 
-    <div class='row'>
+    <div class='row' ng-controller='pimoneyController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>5. Euro Pi</h4>
         <p>
-          {{ 3.14159265359 | currency : "€" }}
+          {{ pi | currency : "€" }}
         </p>
         <hr>
       </div>
     </div>
 
-    <div class='row'>
+    <div class='row' ng-controller='sayController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>6. Who is this, again?</h4>
@@ -84,40 +84,150 @@
       </div>
     </div>
 
-    <!-- <div class='row' ng-app='selecty' ng-controller='selectController'>
+    <div class='row' ng-controller='droptwoController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
         <h4>7. Dropdown redux</h4>
         <p>How many digits of pi do you want?
-          <select ng-model='digits' ng-options='digits for digits in list'></select>
+          <select ng-model='digits' ng-options='digits for digits in numbers'></select>
         </p>
         <p>
           Here you go! The first {{ digits }}
           <ng-pluralize count='digits' when='{"1": "digit", "other": "digits"}'></ng-pluralize>
           of pi!
         </p>
-        <p>{{ 3.14159265359 | number:digits }}</p>
+        <p>{{ pi | number:digits }}</p>
+        <hr>
       </div>
-      <script>
-      var selectApp = angular.module('selecty', []);
+    </div>
 
-      selectApp.controller('selectController', function($scope) {
-        $scope.list = ['1','2','3','4','5','6','7'];
-      });
-      </script>
-    </div> -->
-
-    <div class='row'>
+    <div class='row' ng-controller='tipController'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
-
+          <h4>8. Super userful tip calculator</h4>
+          <p>How much did your meal cost?
+            <input type='text' ng-model='price'>
+          </p>
+          <p>How much do you want to tip?</p>
+          <p><select ng-model='tip' ng-options='tip.calc as tip.id for tip in tips'></select></p>
+          <p>Subtotal: {{ price | currency }}</p>
+          <p>Tip: {{ tip.calc * price | currency }}</p>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-md-6 col-md-offset-1'>
         <br><br>
+        <h4>9. What's <strong>this</strong>?</h4>
+        <div>{{ this }}</div>
+        <hr>
+      </div>
+    </div>
 
+    <div class='row' ng-controller='madController'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+          <h4>10. Madlibs</h4>
+          <p><strong>Please fill out the following!</strong></p>
+          <p>Boy's name</p>
+          <input type="text" ng-model='boyname'>
+          <p>Adjective</p>
+          <input type="text" ng-model='adjective'>
+          <p>Plural noun</p>
+          <input type="text" ng-model='pluralnoun'>
+          <p>An insect, plural</p>
+          <input type="text" ng-model='pluralinsect'>
+          <p>Plural noun</p>
+          <input type="text" ng-model='pluralnoun2'>
+          <p>A present-tense verb</p>
+          <input type="text" ng-model='verb'>
+          <br><br>
+          <p>My <strong>{{ adjective }}</strong> neighbor is called <strong>{{ boyname }}</strong>.
+             He owns fifteen <strong>{{ pluralnoun }}</strong>. Once his <strong>{{ pluralnoun }}</strong>
+             were attacked by a cloud of <strong>{{ pluralinsect }}</strong>. He had to call the
+             <strong>{{ pluralnoun2 }}</strong>. The <strong>{{ pluralnoun2 }}</strong>
+             were <strong>{{ verb }}</strong>, so they didn't help.
+          </p>
+
+        <hr>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+        <h4>11. Built-in directives</h4>
+        <p>Name at least 3 built-in directives we've used so far</p>
+        <ol>
+          <li>ng-controller</li>
+          <li>np-app</li>
+          <li>ng-model</li>
+        </ol>
+        <hr>
+      </div>
+    </div>
+
+    <div class='row' ng-init='names=["Harry", "Ron", "Hermione", "Tulio"]'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+        <h4>12. ng-repeat</h4>
+        <ul>
+          <li ng-repeat='name in names'>
+            {{ name }}
+          </li>
+        </ul>
+        <hr>
+      </div>
+    </div>
+
+    <div class='row' ng-controller='symsController'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+        <h4>13. Symbols</h4>
+          <ul>
+            <li ng-repeat='sym in symbols'>
+              <span>{{ sym.id }} = </span>
+              <span ng-bind-html='sym.html'></span>
+            </li>
+          </ul>
+        <hr>
+      </div>
+    </div>
+
+    <div class='row' ng-init='numbers=[1,1,2,5,6,9,9,9] track by $index'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+        <h4>14. Duplicate repeats</h4>
+        <ul>
+          <li ng-repeat='num in numbers'>
+            {{ num }}
+          </li>
+        </ul>
+        <hr>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+        <h4></h4>
+        <hr>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+        <h4></h4>
+        <hr>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-6 col-md-offset-1'>
+        <br><br>
+        <h4></h4>
+        <hr>
       </div>
     </div>
 
